@@ -1,8 +1,10 @@
+import {Menu} from "../components/Menu";
+
+
 function Home(){
     return <>
-        <h3>Home </h3>
+        <Menu></Menu>
     </>
 }
 
-
-export {Home};
+export {Home}
