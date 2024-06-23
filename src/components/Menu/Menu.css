@@ -1,0 +1,29 @@
+.navbar{
+    background-color: var(--dim-gray);
+}
+
+.nav-link{
+    color: white;
+}
+
+.active{
+    color: var(--goldenrod) !important;
+}
+
+
+.logout-button {
+    background-color: var(--goldenrod);
+    color: white;
+}
+
+
+.logout-button:hover{
+    background-color: var(--alabaster);
+    color:  var(--goldenrod);
+}
+
+.navbar-brand .logo {
+    height: 30px; /* Ajusta la altura de la imagen del logo */
+    width: auto;
+    margin-left: 10px;
+}

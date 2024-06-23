@@ -1,0 +1,32 @@
+/* Footer.css */
+.footer {
+    background-color: var(--taupe-gray);
+    color: var(--alabaster);
+    height: 40px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    text-align: center; 
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000; 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#root {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}

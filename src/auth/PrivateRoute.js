@@ -9,7 +9,7 @@ function PrivateRoute({ children }) {
     return auth.token ? (
         children
     ) : (
-        <Navigate to="/login" replace state={{ path: location.pathname }} />
+        <Navigate to="/" replace state={{ path: location.pathname }} />
     );
 }
 
