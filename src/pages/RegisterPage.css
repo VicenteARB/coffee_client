@@ -6,21 +6,9 @@
     margin-top: 5%;
 }
 
-.login-card {
-    display: flex;
-    flex-direction: row;
-    border: 1px solid var(--taupe-gray);
-    border-radius: 10px;
-    overflow: hidden;
+.card{
+    border: 1px solid var(--taupe-gray); 
 }
-
-.login-card .card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
-}
-
 
 h1{
     color: var(--taupe);

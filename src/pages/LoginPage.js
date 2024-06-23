@@ -22,7 +22,7 @@ function LoginPage() {
             navigate("/"); // Redirige a la página de inicio
         } else {
             setError("Credenciales incorrectas. Por favor, intenta de nuevo.");
-            toast.error('Error', 'Credenciales incorrectas. Por favor, intenta de nuevo.');
+            toast.error('Credenciales incorrectas. Por favor, intenta de nuevo.');
         }
     };
 

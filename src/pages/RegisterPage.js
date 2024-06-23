@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import bcrypt from "bcryptjs";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './RegisterPage.css';
+import { toast } from 'react-toastify';
 
 function RegisterPage() {
     const [username, setUsername] = useState("");
@@ -12,6 +13,11 @@ function RegisterPage() {
     const navigate = useNavigate();
 
     const register = async () => {
+        if (!username || !email || !password) {
+            toast.warn('Por favor, completa todos los campos');
+            return; // Cancela la operación si falta algún campo
+        }
+
         try {
             const salt = bcrypt.genSaltSync(12);
             const hashedPassword = bcrypt.hashSync(password, salt);
@@ -35,9 +41,9 @@ function RegisterPage() {
             const resp = await response.json();
             console.log(resp);
 
-
             if (response.ok) {
-                navigate("/");
+                navigate("/login");
+                toast.success('Cuenta creada con éxito');
             } else {
                 setError("Error al crear la cuenta. Por favor, intenta de nuevo.");
             }
@@ -76,7 +82,7 @@ function RegisterPage() {
                     />
                 </div>
                 <button className="btn btn-block register-button mb-3" onClick={register}>Registrar</button>
-                <button className="btn btn-block back-button mb-3" onClick={register}>Volver</button>
+                <button className="btn btn-block back-button mb-3" onClick={() => navigate("/login")}>Volver</button> {/* Cambié la acción del botón Volver para redirigir a login */}
             </div>
         </div>
     );

@@ -4,12 +4,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import { AuthProvider } from "./auth/AuthContext";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
+import { ClientsPage } from "./pages/ClientsPage";
 import { CreateCoffeePage } from "./pages/CreateCoffeePage";
 import { PrivateRoute } from "./auth/PrivateRoute";
 import { Home } from "./pages/Home";
 import { Footer } from "./components/Footer/Footer";
 import { ToastContainer } from 'react-toastify';
 import { Menu } from "./components/Menu/index";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function App() {
   return (
@@ -21,7 +23,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/nuevo-cafe" element={<PrivateRoute><CreateCoffeePage /></PrivateRoute>} />
-          <Route path="*" element={<p>Ups, no existe la ruta</p>} />
+          <Route path="/gestion-clientes" element={<ClientsPage/>} />
+          <Route path="*" element={<p>No existe la ruta</p>} />
         </Routes>
         <Footer />
         <ToastContainer />
