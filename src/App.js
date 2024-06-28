@@ -8,10 +8,13 @@ import { ClientsPage } from "./pages/ClientsPage";
 import { CreateCoffeePage } from "./pages/CreateCoffeePage";
 import { PrivateRoute } from "./auth/PrivateRoute";
 import { Home } from "./pages/Home";
+import { AboutUs } from "./pages/AboutUs";
 import { Footer } from "./components/Footer/Footer";
 import { ToastContainer } from 'react-toastify';
 import { Menu } from "./components/Menu/index";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+
+
 
 function App() {
   return (
@@ -22,6 +25,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/acerca-de" element={<AboutUs />} />
           <Route path="/nuevo-cafe" element={<PrivateRoute><CreateCoffeePage /></PrivateRoute>} />
           <Route path="/gestion-clientes" element={<ClientsPage/>} />
           <Route path="*" element={<p>No existe la ruta</p>} />

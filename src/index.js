@@ -11,6 +11,10 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const link = document.createElement('link');
+link.href = 'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap';
+link.rel = 'stylesheet';
+document.head.appendChild(link);
 root.render(
   <React.StrictMode>
     <App />

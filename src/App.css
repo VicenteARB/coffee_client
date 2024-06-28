@@ -2,15 +2,9 @@ html,
 body {
   background-color: #ffffff;
   background-image: linear-gradient(180deg, #ffffff 0%, #ffe5c9 100%);
-
   margin: 0;
   padding: 0;
-  height: 100vh;
-  /* Asegurar que el body ocupe toda la altura de la ventana */
-  overflow: hidden;
-  /* Evitar scroll innecesario si el contenido es menor que la altura de la ventana */
-  height: 100%;
-  margin: 0;
+  min-height: 100%; /* Cambiar height a min-height */
   display: flex;
   flex-direction: column;
 }
@@ -28,4 +22,15 @@ body {
 
 .footer {
   flex-shrink: 0;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: inherit; /* Asegura que el fondo se herede */
+}
+
+.table {
+  margin-bottom: 40px; /* Ajusta el margen inferior según sea necesario */
 }

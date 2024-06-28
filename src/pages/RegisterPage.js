@@ -4,18 +4,20 @@ import bcrypt from "bcryptjs";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './RegisterPage.css';
 import { toast } from 'react-toastify';
+import { registerAccount } from "../services/api"; 
+
+
 
 function RegisterPage() {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
     const navigate = useNavigate();
 
     const register = async () => {
         if (!username || !email || !password) {
             toast.warn('Por favor, completa todos los campos');
-            return; // Cancela la operación si falta algún campo
+            return; 
         }
 
         try {
@@ -30,25 +32,17 @@ function RegisterPage() {
                 locked: 0
             };
 
-            const response = await fetch('http://localhost:8080/api/user/save', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(userData),
-            });
+            const resp = await registerAccount(userData);
 
-            const resp = await response.json();
-            console.log(resp);
-
-            if (response.ok) {
+            if (resp) {
                 navigate("/login");
                 toast.success('Cuenta creada con éxito');
             } else {
-                setError("Error al crear la cuenta. Por favor, intenta de nuevo.");
+                console.log(resp);
+                toast.error("Error al crear la cuenta. Por favor, intenta de nuevo.");
             }
         } catch (error) {
-            setError("Error al procesar la solicitud. Por favor, intenta de nuevo.");
+            toast.error("Error al procesar la solicitud. Por favor, intenta de nuevo.");
         }
     };
 
@@ -56,7 +50,6 @@ function RegisterPage() {
         <div className="d-flex justify-content-center align-items-start login-container vh-100">
             <div className="card p-4" style={{ minWidth: '300px' }}>
                 <h1 className="text-center mb-4">Registro</h1>
-                {error && <div className="alert alert-danger">{error}</div>}
                 <div className="form-group">
                     <input 
                         type="text" 

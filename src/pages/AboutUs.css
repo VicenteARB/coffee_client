@@ -1,0 +1,51 @@
+.about-us-container h2,
+.about-us-container h3,
+.about-us-container h5 {
+  color: #4b4237; /* Color taupe */
+}
+
+.about-us-container p {
+  color: #736b60; /* Color dim gray */
+}
+
+.about-us-container .img-fluid {
+  border-radius: 5px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.about-us-container .container {
+  margin-top: 2%;
+}
+
+.about-us-container .card {
+  border: none;
+}
+
+.about-us-container .card-body {
+  padding: 1rem;
+}
+
+.about-us-container .card img {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-container {
+  position: relative;
+  height: 200px; /* Altura fija para el contenedor de la imagen */
+  overflow: hidden; /* Asegura que las imágenes solo sean visibles dentro del contenedor */
+}
+
+.image-slider {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.image-slider img {
+  flex: 0 0 100%;
+  border-radius: 5px;
+}

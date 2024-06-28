@@ -1,0 +1,65 @@
+.mainImage {
+    margin-top: 2%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.mainImage img {
+    margin: 0px;
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+
+.subImage {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    margin-bottom: 20px;
+}
+
+.subImage .card {
+    width: 90%;
+    border: none;
+    background-color: var(--taupe);
+    color: white;
+    margin-bottom: 50px;
+}
+
+
+.card-title, .card-text{
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+.subImage img {
+    margin: 0px;
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.animated-phrase {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    color: var(--taupe);
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-family: 'Dancing Script', cursive;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }

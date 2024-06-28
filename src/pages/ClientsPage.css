@@ -1,0 +1,35 @@
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: inherit;
+}
+
+.table {
+  margin-bottom: 100px;
+}
+
+
+
+.table thead.table-custom-header th {
+  background-color: var(--taupe-gray) !important;
+  color: var(--alabaster) !important;
+
+}
+
+.table thead.table-custom-header {
+  background-color: var(--taupe-gray) !important;
+}
+
+
+.edit-button {
+  background-color: var(--goldenrod);
+  width: 70%;
+  color: white;
+}
+
+
+.edit-button:hover {
+  background-color: var(--alabaster);
+  color: var(--goldenrod);
+}

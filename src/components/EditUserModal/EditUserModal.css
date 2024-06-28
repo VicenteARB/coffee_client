@@ -1,0 +1,26 @@
+.modal-header {
+    background-color: #4b4237ff;
+    color: white;
+}
+
+label.form-label,
+input {
+    margin-bottom: 13px;
+}
+
+div.form-check {
+    margin-bottom: 0px;
+}
+
+
+.save-button {
+    background-color: #d5a021ff;
+    color: white;
+    border: none;
+}
+
+
+.save-button:hover {
+    background-color: #ede7d9ff;
+    color: #d5a021ff;
+}

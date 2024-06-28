@@ -16,6 +16,7 @@ function Menu() {
   let decodedToken = null;
 
   if (auth.token) {
+    console.log(auth.token);
     try {
       decodedToken = jwtDecode(auth.token);
     } catch (error) {
@@ -28,7 +29,6 @@ function Menu() {
 
   if (decodedToken) {
     if (decodedToken.role === "ADMIN") {
-      console.log("AQUIIIIII");
       routes.push({ to: "/nuevo-cafe", text: "Gestión coffees" });
       routes.push({ to: "/gestion-clientes", text: "Gestión clientes" });
     } else if (decodedToken.role === "CUSTOMER") {
