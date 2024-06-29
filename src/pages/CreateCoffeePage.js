@@ -1,41 +1,91 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getCoffeeList, addCoffee, updateCoffee, deleteCoffee } from "../services/api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./CreateCoffeePage.css";
 import EditCoffeeModal from "../components/EditCoffeeModal/EditCoffeeModal";
+import AddCoffeeModal from "../components/AddCoffeeModal/AddCoffeeModal";
 import { toast } from "react-toastify";
 
 function CreateCoffeePage() {
-  const [products, setProducts] = useState([
-    { id: 1, name: "Café Espresso", description: "Café de alta calidad", price: 2.50, comment: "Popular" },
-    { id: 2, name: "Café Americano", description: "Café suave y aromático", price: 2.00, comment: "Ligero" },
-    { id: 3, name: "Café Latte", description: "Café con leche cremoso", price: 3.00, comment: "Favorito" },
-  ]);
+  const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const productsList = await getCoffeeList();
+        setProducts(productsList);
+      } catch (error) {
+        setError("Error al obtener la lista de productos");
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const handleEditClick = (product) => {
     setSelectedProduct(product);
-    setShowModal(true);
+    setShowEditModal(true);
+  };
+
+  const handleAddClick = () => {
+    setShowAddModal(true);
   };
 
   const handleModalClose = () => {
-    setShowModal(false);
+    setShowEditModal(false);
+    setShowAddModal(false);
     setSelectedProduct(null);
   };
 
-  const handleSaveProduct = (updatedProduct) => {
-    const updatedProducts = products.map(product =>
-      product.id === updatedProduct.id ? updatedProduct : product
-    );
-    setProducts(updatedProducts);
-    setShowModal(false);
-    toast.success('Producto actualizado con éxito');
+  const handleSaveProduct = async (updatedProduct) => {
+    try {
+      await updateCoffee(updatedProduct.idCoffee, updatedProduct);
+      const updatedProducts = products.map(product =>
+        product.idCoffee === updatedProduct.idCoffee ? updatedProduct : product
+      );
+      setProducts(updatedProducts);
+      setShowEditModal(false);
+      toast.success('Producto actualizado con éxito');
+    } catch (error) {
+      toast.error('Error al actualizar el producto. Por favor, intenta de nuevo.');
+    }
+  };
+
+  const handleAddProduct = async (newProduct) => {
+    try {
+      const addedProduct = await addCoffee(newProduct);
+      setProducts([...products, addedProduct]);
+      setShowAddModal(false);
+      toast.success('Producto agregado con éxito');
+    } catch (error) {
+      toast.error('Error al agregar el producto. Por favor, intenta de nuevo.');
+    }
+  };
+
+  const handleDeleteProduct = async (idCoffee) => {
+    try {
+      await deleteCoffee(idCoffee);
+      const updatedProducts = products.filter(product => product.idCoffee !== idCoffee);
+      setProducts(updatedProducts);
+      setShowEditModal(false);
+      toast.success('Producto eliminado con éxito');
+    } catch (error) {
+      toast.error('Error al eliminar el producto. Por favor, intenta de nuevo.');
+    }
   };
 
   return (
     <div className="container mt-5">
-      <h1>Productos</h1>
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h1>Productos</h1>
+        <button className="btn btn-primary" onClick={handleAddClick}>
+          Agregar Producto
+        </button>
+      </div>
       {error && <div className="alert alert-danger">{error}</div>}
       <table className="table table-striped">
         <thead className="table-custom-header">
@@ -44,18 +94,16 @@ function CreateCoffeePage() {
             <th scope="col">Nombre</th>
             <th scope="col">Descripción</th>
             <th scope="col">Precio</th>
-            <th scope="col">Comentario</th>
             <th scope="col">Opciones</th>
           </tr>
         </thead>
         <tbody>
           {products.map((product, index) => (
             <tr key={index}>
-              <td>{product.id}</td>
+              <td>{product.idCoffee}</td>
               <td>{product.name}</td>
               <td>{product.description}</td>
               <td>${product.price.toFixed(2)}</td>
-              <td>{product.comment}</td>
               <td>
                 <button
                   className="btn edit-button btn-sm"
@@ -70,12 +118,18 @@ function CreateCoffeePage() {
       </table>
       {selectedProduct && (
         <EditCoffeeModal
-          show={showModal}
+          show={showEditModal}
           handleClose={handleModalClose}
           product={selectedProduct}
           handleSave={handleSaveProduct}
+          handleDelete={handleDeleteProduct}
         />
       )}
+      <AddCoffeeModal
+        show={showAddModal}
+        handleClose={handleModalClose}
+        handleSave={handleAddProduct}
+      />
     </div>
   );
 }

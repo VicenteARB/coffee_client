@@ -82,3 +82,97 @@ export const updateUser = async (username, userData) => {
         throw error;
     }
 };
+
+
+export const addCoffee = async (coffeeData) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/coffee/save`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(coffeeData),
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al crear el coffee');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error gestionando su solicitud', error);
+        throw error;
+    }
+};
+
+
+export const getCoffeeList = async () => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/coffee/list`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al obtener la lista de coffees');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error gestionando su solicitud', error);
+        throw error;
+    }
+};
+
+
+
+export const updateCoffee = async (id, userData) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/coffee/update/${id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al actualizar el usuario');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error updating coffee:', error);
+        throw error;
+    }
+};
+
+
+export const deleteCoffee = async (idCoffee) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/coffee/delete/${idCoffee}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al eliminar el producto');
+        }
+
+        return response.text(); 
+    } catch (error) {
+        console.error('Error deleting coffee:', error);
+        throw error;
+    }
+};
+
+
+
+

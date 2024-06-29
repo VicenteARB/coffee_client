@@ -19,6 +19,7 @@ function Menu() {
     console.log(auth.token);
     try {
       decodedToken = jwtDecode(auth.token);
+      console.log(decodedToken);
     } catch (error) {
       console.error("Error decoding token", error);
     }
