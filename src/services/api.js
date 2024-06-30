@@ -174,5 +174,28 @@ export const deleteCoffee = async (idCoffee) => {
 };
 
 
+export const addTestimonial = async (testimonialData) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/testimonials/create`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(testimonialData),
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al crear el reseña');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error gestionando su reseña', error);
+        throw error;
+    }
+};
+
+
 
 

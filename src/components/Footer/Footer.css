@@ -1,4 +1,3 @@
-/* Footer.css */
 .footer {
     background-color: var(--taupe-gray);
     color: var(--alabaster);
@@ -13,11 +12,9 @@
     z-index: 1000; 
 }
 
-
-
 #root {
     flex: 1;
     display: flex;
     flex-direction: column;
+    padding-bottom: 40px; 
 }
-

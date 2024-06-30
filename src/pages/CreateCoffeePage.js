@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getCoffeeList, addCoffee, updateCoffee, deleteCoffee } from "../services/api";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";  
 import "./CreateCoffeePage.css";
 import EditCoffeeModal from "../components/EditCoffeeModal/EditCoffeeModal";
 import AddCoffeeModal from "../components/AddCoffeeModal/AddCoffeeModal";
@@ -80,10 +81,10 @@ function CreateCoffeePage() {
 
   return (
     <div className="container mt-5">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h1>Productos</h1>
-        <button className="btn btn-primary" onClick={handleAddClick}>
-          Agregar Producto
+      <div className="d-flex align-items-center mb-4">
+        <h1 className="mr-3">Productos</h1>
+        <button className="btn add-coffee ml-3" onClick={handleAddClick}>
+          <i className="bi bi-plus-circle"></i> Agregar Producto
         </button>
       </div>
       {error && <div className="alert alert-danger">{error}</div>}
@@ -103,13 +104,13 @@ function CreateCoffeePage() {
               <td>{product.idCoffee}</td>
               <td>{product.name}</td>
               <td>{product.description}</td>
-              <td>${product.price.toFixed(2)}</td>
+              <td>${product.price.toFixed(0)}</td>
               <td>
                 <button
                   className="btn edit-button btn-sm"
                   onClick={() => handleEditClick(product)}
                 >
-                  Gestionar
+                  <i className="bi bi-pencil"></i> Gestionar
                 </button>
               </td>
             </tr>

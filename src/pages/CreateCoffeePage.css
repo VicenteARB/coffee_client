@@ -1,0 +1,12 @@
+
+.add-coffee {
+    background-color: var(--taupe);
+    margin-left: 10px;
+    color: white;
+}
+
+
+.add-coffee:hover {
+    background-color: var(--alabaster);
+    color: var(--taupe);
+}

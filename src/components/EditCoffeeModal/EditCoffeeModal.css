@@ -22,14 +22,14 @@
   }
   
   
-  .edit-button {
-    background-color: var(--goldenrod);
-    width: 70%;
+  .edit-coffee {
+    background-color: #d5a021ff !important;
     color: white;
+    border: none;
   }
   
   
-  .edit-button:hover {
-    background-color: var(--alabaster);
-    color: var(--goldenrod);
+  .edit-coffee:hover {
+    background-color: #ede7d9ff !important;
+    color: #d5a021ff !important;
   }

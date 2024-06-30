@@ -1,0 +1,33 @@
+/* ReviewsModal.css */
+.review-card {
+  border: none;
+}
+.review-card-body {
+  display: flex;
+  align-items: center;
+}
+.review-icon {
+  font-size: 2rem;
+}
+.review-card-title {
+  margin: 0;
+}
+.review-card-text {
+  margin: 0;
+  color: #555;
+}
+
+
+
+.review-coffee {
+  background-color: #d5a021ff !important;
+  margin-left: 10px;
+  color: white;
+  border: none;
+}
+
+
+.review-coffee:hover {
+  background-color: #ede7d9ff !important;
+  color: #d5a021ff !important;
+}

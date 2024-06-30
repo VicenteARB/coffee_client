@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { toast } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import './EditCoffeeModal.css';
 
 function EditCoffeeModal({ show, handleClose, product, handleSave, handleDelete }) {
@@ -73,13 +74,13 @@ function EditCoffeeModal({ show, handleClose, product, handleSave, handleDelete 
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Cancelar
-        </Button>
-        <Button variant="primary" onClick={saveProduct}>
-          Guardar Cambios
+          <i className="bi bi-x-circle"></i> Cancelar
         </Button>
         <Button variant="danger" onClick={deleteProduct}>
-          Eliminar
+          <i className="bi bi-trash"></i> Eliminar
+        </Button>
+        <Button className="edit-coffee" onClick={saveProduct}>
+          <i className="bi bi-save"></i> Guardar Cambios
         </Button>
       </Modal.Footer>
     </Modal>

@@ -99,7 +99,7 @@ function AddCoffeeModal({ show, handleClose, handleSave }) {
         <Button variant="secondary" onClick={handleCloseModal}>
           Cancelar
         </Button>
-        <Button variant="primary" onClick={saveProduct}>
+        <Button className="add-coffee" onClick={saveProduct}>
           Guardar Producto
         </Button>
       </Modal.Footer>

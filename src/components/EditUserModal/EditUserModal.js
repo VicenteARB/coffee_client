@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { toast } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import './EditUserModal.css';
 
 function EditUserModal({ show, handleClose, user, handleSave }) {
@@ -80,10 +81,10 @@ function EditUserModal({ show, handleClose, user, handleSave }) {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Cancelar
+          <i className="bi bi-x-circle"></i> Cancelar
         </Button>
-        <Button  className ="save-button" variant="primary" onClick={saveChanges}>
-          Guardar Cambios
+        <Button className="save-button" variant="primary" onClick={saveChanges}>
+          <i className="bi bi-save"></i> Guardar Cambios
         </Button>
       </Modal.Footer>
     </Modal>

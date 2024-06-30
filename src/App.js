@@ -13,6 +13,7 @@ import { Footer } from "./components/Footer/Footer";
 import { ToastContainer } from 'react-toastify';
 import { Menu } from "./components/Menu/index";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { Coffees } from "./pages/Coffees";
 
 
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/acerca-de" element={<AboutUs />} />
+          <Route path="/coffees" element={<Coffees />} />
           <Route path="/nuevo-cafe" element={<PrivateRoute><CreateCoffeePage /></PrivateRoute>} />
           <Route path="/gestion-clientes" element={<ClientsPage/>} />
           <Route path="*" element={<p>No existe la ruta</p>} />

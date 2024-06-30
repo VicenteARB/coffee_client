@@ -1,0 +1,36 @@
+.card-img-top {
+    width: auto;
+    height: 199px;
+    object-fit: cover;
+}
+
+
+div.card-body{
+    margin-bottom: 10px;
+}
+
+
+
+.testimonials-button {
+    background-color: var(--goldenrod);
+    width: 100%;
+    color: white;
+}
+
+
+.testimonials-button:hover {
+    background-color: var(--alabaster);
+    color: var(--goldenrod);
+}
+
+.price-label {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    display: block;
+    margin-bottom: 10px;
+    padding: 0.5em 1em;
+    background-color: var(--alabaster);
+    color:  var(--toupe);
+    border-radius: 5px;
+    text-align: center;
+  }

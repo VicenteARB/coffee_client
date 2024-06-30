@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getUserList, updateUser } from "../services/api";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";  
 import './ClientsPage.css';
 import EditUserModal from "../components/EditUserModal/EditUserModal";
 import { toast } from "react-toastify";
@@ -81,11 +82,11 @@ function ClientsPage() {
                 </span>
               </td>
               <td>
-                <button
+                <button 
                   className="btn edit-button btn-sm"
                   onClick={() => handleEditClick(client)}
                 >
-                  Gestionar
+                  <i className="bi bi-pencil"></i> Gestionar
                 </button>
               </td>
             </tr>
