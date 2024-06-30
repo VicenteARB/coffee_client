@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import './EditCoffeeModal.css';
 
-function EditCoffeeModal({ show, handleClose, product, handleSave, handleDelete }) {
+function EditCoffeeModal({ show, handleClose, product, handleSave, handleDelete, token }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -29,11 +29,11 @@ function EditCoffeeModal({ show, handleClose, product, handleSave, handleDelete 
       description,
       price: parseFloat(price)
     };
-    handleSave(updatedProduct);
+    handleSave(updatedProduct, token); // Pasar el token al guardar
   };
 
   const deleteProduct = () => {
-    handleDelete(product.idCoffee);
+    handleDelete(product.idCoffee, token); // Pasar el token al eliminar
   };
 
   return (

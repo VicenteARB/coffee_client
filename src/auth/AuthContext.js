@@ -46,8 +46,10 @@ export function AuthProvider({ children }) {
     return null;
   };
 
+  const getToken = () => auth.token;
+
   return (
-    <AuthContext.Provider value={{ auth, setToken, logout, getRoleAndUsername }}>
+    <AuthContext.Provider value={{ auth, setToken, logout, getRoleAndUsername, getToken }}>
       {children}
     </AuthContext.Provider>
   );

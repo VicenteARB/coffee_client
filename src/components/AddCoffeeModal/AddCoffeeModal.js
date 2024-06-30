@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { toast } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './AddCoffeeModal.css';
 
-function AddCoffeeModal({ show, handleClose, handleSave }) {
+function AddCoffeeModal({ show, handleClose, handleSave, token }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -30,9 +30,8 @@ function AddCoffeeModal({ show, handleClose, handleSave }) {
       price: parseFloat(price),
       image64
     };
-    handleSave(newProduct);
+    handleSave(newProduct, token);
     clearForm();
- 
   };
 
   const clearForm = () => {

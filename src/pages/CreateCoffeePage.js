@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { getCoffeeList, addCoffee, updateCoffee, deleteCoffee } from "../services/api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";  
@@ -6,8 +6,12 @@ import "./CreateCoffeePage.css";
 import EditCoffeeModal from "../components/EditCoffeeModal/EditCoffeeModal";
 import AddCoffeeModal from "../components/AddCoffeeModal/AddCoffeeModal";
 import { toast } from "react-toastify";
+import { AuthContext } from "../auth/AuthContext";
 
 function CreateCoffeePage() {
+  const { getToken } = useContext(AuthContext);
+  const token = getToken();
+  
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -17,7 +21,7 @@ function CreateCoffeePage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const productsList = await getCoffeeList();
+        const productsList = await getCoffeeList(token);
         setProducts(productsList);
       } catch (error) {
         setError("Error al obtener la lista de productos");
@@ -25,7 +29,7 @@ function CreateCoffeePage() {
     };
 
     fetchProducts();
-  }, []);
+  }, [token]);
 
   const handleEditClick = (product) => {
     setSelectedProduct(product);
@@ -44,7 +48,7 @@ function CreateCoffeePage() {
 
   const handleSaveProduct = async (updatedProduct) => {
     try {
-      await updateCoffee(updatedProduct.idCoffee, updatedProduct);
+      await updateCoffee(updatedProduct.idCoffee, updatedProduct, token);
       const updatedProducts = products.map(product =>
         product.idCoffee === updatedProduct.idCoffee ? updatedProduct : product
       );
@@ -58,7 +62,7 @@ function CreateCoffeePage() {
 
   const handleAddProduct = async (newProduct) => {
     try {
-      const addedProduct = await addCoffee(newProduct);
+      const addedProduct = await addCoffee(newProduct, token);
       setProducts([...products, addedProduct]);
       setShowAddModal(false);
       toast.success('Producto agregado con éxito');
@@ -69,7 +73,7 @@ function CreateCoffeePage() {
 
   const handleDeleteProduct = async (idCoffee) => {
     try {
-      await deleteCoffee(idCoffee);
+      await deleteCoffee(idCoffee, token);
       const updatedProducts = products.filter(product => product.idCoffee !== idCoffee);
       setProducts(updatedProducts);
       setShowEditModal(false);
@@ -124,12 +128,14 @@ function CreateCoffeePage() {
           product={selectedProduct}
           handleSave={handleSaveProduct}
           handleDelete={handleDeleteProduct}
+          token={token} 
         />
       )}
       <AddCoffeeModal
         show={showAddModal}
         handleClose={handleModalClose}
         handleSave={handleAddProduct}
+        token={token} 
       />
     </div>
   );

@@ -17,12 +17,13 @@ export async function loginAccount(login) {
     }
 }
 
-export const getUserList = async () => {
+export const getUserList = async (token) => {
     try {
         const response = await fetch(`${API_BASE_URL}/auth/list`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
         });
 
@@ -60,13 +61,13 @@ export const registerAccount = async (userData) => {
     }
 };
 
-
-export const updateUser = async (username, userData) => {
+export const updateUser = async (username, userData, token) => {
     try {
         const response = await fetch(`${API_BASE_URL}/auth/update/${username}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify(userData),
         });
@@ -83,13 +84,13 @@ export const updateUser = async (username, userData) => {
     }
 };
 
-
-export const addCoffee = async (coffeeData) => {
+export const addCoffee = async (coffeeData, token) => {
     try {
         const response = await fetch(`${API_BASE_URL}/coffee/save`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify(coffeeData),
         });
@@ -106,13 +107,13 @@ export const addCoffee = async (coffeeData) => {
     }
 };
 
-
-export const getCoffeeList = async () => {
+export const getCoffeeList = async (token) => {
     try {
         const response = await fetch(`${API_BASE_URL}/coffee/list`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
         });
 
@@ -128,14 +129,13 @@ export const getCoffeeList = async () => {
     }
 };
 
-
-
-export const updateCoffee = async (id, userData) => {
+export const updateCoffee = async (id, userData, token) => {
     try {
         const response = await fetch(`${API_BASE_URL}/coffee/update/${id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify(userData),
         });
@@ -152,13 +152,13 @@ export const updateCoffee = async (id, userData) => {
     }
 };
 
-
-export const deleteCoffee = async (idCoffee) => {
+export const deleteCoffee = async (idCoffee, token) => {
     try {
         const response = await fetch(`${API_BASE_URL}/coffee/delete/${idCoffee}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
         });
 
@@ -173,13 +173,13 @@ export const deleteCoffee = async (idCoffee) => {
     }
 };
 
-
-export const addTestimonial = async (testimonialData) => {
+export const addTestimonial = async (testimonialData, token) => {
     try {
         const response = await fetch(`${API_BASE_URL}/testimonials/create`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify(testimonialData),
         });
@@ -195,7 +195,3 @@ export const addTestimonial = async (testimonialData) => {
         throw error;
     }
 };
-
-
-
-

@@ -1,21 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { getUserList, updateUser } from "../services/api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";  
 import './ClientsPage.css';
 import EditUserModal from "../components/EditUserModal/EditUserModal";
 import { toast } from "react-toastify";
+import { AuthContext } from "../auth/AuthContext";
 
 function ClientsPage() {
   const [clients, setClients] = useState([]);
   const [error, setError] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const { getToken } = useContext(AuthContext);
+  const token = getToken();
 
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const clientsList = await getUserList();
+        const clientsList = await getUserList(token);
         setClients(clientsList);
         console.log(clientsList);
       } catch (error) {
@@ -25,7 +28,7 @@ function ClientsPage() {
     };
 
     fetchClients();
-  }, []);
+  }, [token]);
 
   const handleEditClick = (user) => {
     setSelectedUser(user);
@@ -39,7 +42,7 @@ function ClientsPage() {
 
   const handleSaveUser = async (updatedUser) => {
     try {
-      await updateUser(updatedUser.username, updatedUser);
+      await updateUser(updatedUser.username, updatedUser, token);
       const updatedClients = clients.map(client =>
         client.username === updatedUser.username ? updatedUser : client
       );

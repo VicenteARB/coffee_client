@@ -9,8 +9,9 @@ import { AuthContext } from "../../auth/AuthContext";
 
 function ReviewsModal({ show, handleClose, coffee }) {
   const [newTestimonial, setNewTestimonial] = useState("");
-  const { getRoleAndUsername } = useContext(AuthContext);
+  const { getRoleAndUsername, getToken } = useContext(AuthContext);
   const userInfo = getRoleAndUsername();
+  const token = getToken();
 
   const handleAddTestimonial = async () => {
     if (!userInfo) {
@@ -30,7 +31,7 @@ function ReviewsModal({ show, handleClose, coffee }) {
     };
 
     try {
-      await addTestimonial(testimonialData);
+      await addTestimonial(testimonialData, token);
       toast.success("Reseña agregada exitosamente");
       coffee.testimonials.push(testimonialData); // Actualiza las reseñas localmente
       setNewTestimonial("");
