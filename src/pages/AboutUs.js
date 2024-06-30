@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./AboutUs.css";
 import companyImage1 from "../img/companyImage.jpg";
 import companyImage2 from "../img/companyImage2.jpg";
-import creator1Image from "../img/user1.jpg";
+import creator1Image from "../img/user1.png";
 import creator2Image from "../img/user2.jpg";
 import { useState, useEffect } from "react";
 
@@ -48,7 +48,7 @@ function AboutUs() {
                   <h5 className="card-title">Vicente Reyes</h5>
                   <p className="card-text">Ingeniero Civil Informático</p>
                   <p className="card-text">
-                    GitHub: <a href="https://github.com/" target="_blank" rel="noopener noreferrer">https://github.com/</a>
+                    <a href="https://github.com/VicenteARB" target="_blank" rel="noopener noreferrer">GitHub</a>
                   </p>
                 </div>
               </div>
@@ -64,7 +64,7 @@ function AboutUs() {
                   <h5 className="card-title">Carlos Tapia</h5>
                   <p className="card-text">Ingeniero Civil Informático</p>
                   <p className="card-text">
-                    GitHub: <a href="https://github.com/" target="_blank" rel="noopener noreferrer">https://github.com/</a>
+                    <a href="https://github.com/Crlsljndr" target="_blank" rel="noopener noreferrer">GitHub</a>
                   </p>
                 </div>
               </div>
